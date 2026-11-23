@@ -1,0 +1,27 @@
+name: RAG CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: pytest -q
+  retrieval-evaluation:
+    # Required only after a versioned evaluation corpus/index and >=20 labeled questions are committed.
+    # This job intentionally fails closed if benchmark assets are missing.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python -m evaluation.run
+      - run: python -m evaluation.gate
