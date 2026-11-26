@@ -10,6 +10,8 @@ Retrieval-Augmented Generation (RAG) workflow and can use a locally
 running Ollama language model to generate responses grounded in
 available paper content.
 
+<img width="1920" height="1080" alt="Screenshot 2026-11-27 012322" src="https://github.com/user-attachments/assets/93ae750b-b47e-49b9-b03b-c4499c3f10b3" />
+
 ## Table of Contents
 
 -   [Overview](#overview)
